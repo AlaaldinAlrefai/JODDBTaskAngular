@@ -1,0 +1,123 @@
+<!-- <div class="container-fluid d-flex justify-content-center align-items-center vh-100" 
+     style="background: linear-gradient(135deg, #e0e0e0, #f4eaea);">
+  <div
+    class="card shadow-lg p-4 border-0"
+    style="
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      background: #6d6d6ee4;
+      color: rgb(22, 20, 20);
+    "
+  >
+    <h2 class="text-center mb-4" style="font-weight: bold; letter-spacing: 1px; color: #fafafa;">Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group mb-4">
+        <label for="username" class="form-label" style="font-weight: 500; color: #fafafa;">Email</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="email"
+          name="username"
+          class="form-control"
+          style="
+            border: 2px solid #fafafa;
+            background-color: #ffffffd2;
+            color: rgb(0, 0, 0);
+            border-radius: 6px;
+            padding: 10px;
+          "
+          required
+          placeholder="Enter your Email"
+        />
+      </div>
+      <div class="form-group mb-4">
+        <label for="password" class="form-label" style="font-weight: 500; color: #fafafa;">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-control"
+          style="
+            border: 2px solid #fafafa;
+            background-color: #ffffffd2;
+            color: rgb(0, 0, 0);
+            border-radius: 6px;
+            padding: 10px;
+          "
+          required
+          placeholder="Enter your password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn w-100"
+        style="
+          font-weight: bold;
+          background-color: #616161;
+          color: #fafafa;
+          border: none;
+          padding: 12px;
+          border-radius: 8px;
+          transition: all 0.3s;
+        "
+        onmouseover="this.style.backgroundColor='#757575'; this.style.color='white';"
+        onmouseout="this.style.backgroundColor='#616161'; this.style.color='#fafafa';"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+        
+        <div class="container">
+          <div class="row" style="height: 100vh;">
+              <div class="col-md-6 mx-auto d-flex justify-content-center align-items-center">
+                  <div class="form-wrap">
+                      <h4 class="btm-sep pb-3 mb-5 mx-auto d-flex justify-content-center align-items-center">SignIn To Your Account</h4>
+                      <form (ngSubmit)="onSubmit()" class="form" method="post" action="#">
+                          <div class="row">
+                              <div class="col-12">
+                                  <div class="form-group position-relative">
+                                      <span class="zmdi zmdi-account"></span>
+                                      <input type="email" name="username" id="email" [(ngModel)]="email" required class="form-control" placeholder="Email">
+                                  </div>
+                              </div>
+                              <div class="col-12 mt-4">
+                                  <div class="form-group position-relative">
+                                      <span class="zmdi zmdi-email"></span>
+                                      <input type="password" name="password"  id="password" [(ngModel)]="password" required class="form-control" placeholder="Password">
+                                  </div>
+                              </div>
+
+                              <div class="col-12 mt-30 mt-4">
+                                  <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign In</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      

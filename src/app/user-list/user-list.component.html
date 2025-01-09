@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- Sidebar (يأخذ عمودين) -->
+    <div class="col-md-1">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <!-- محتوى اليوزر (يأخذ الباقي) -->
+    <div class="col-md-11">
+
+      <div class="user-list-container">
+        <h2 class="section-title">User List</h2>
+        <div class="import-excel-container">
+          <h3 class="import-title">Import Excel</h3>
+          <div class="file-upload-container">
+            <input type="file" class="file-input" (change)="importExcel($event)" accept=".xlsx, .xls" />
+            <div *ngIf="isLoading" class="spinner"></div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>    
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of userList">
+                <td class="photo">
+                  <img [src]="'assets/' + user.photo" alt="User Photo" class="user-photo" />
+                </td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.mobileNumber }}</td>
+                <td>{{ user.password }}</td>
+                <td>
+                  <button class="btn btn-delete" (click)="delete(user.id)">Delete</button>
+                  <button class="btn btn-update" (click)="openUpdatePopup(user.id)">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div class="pagination">
+          <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage <= 1">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage >= totalPages">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-update-user 
+  *ngIf="isPopupOpen && selectedUser" 
+  [selectedUser]="selectedUser" 
+  (close)="closePopup()"
+  (userUpdated)="onUserUpdated()">
+</app-update-user>
+
+
+
+

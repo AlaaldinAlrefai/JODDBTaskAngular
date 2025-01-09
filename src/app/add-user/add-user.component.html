@@ -1,0 +1,56 @@
+<div>
+
+<app-sidebar></app-sidebar>
+<div class="add-user-form">
+  <h2>Add User</h2>
+  <form #addUserForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Name field with validation -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="Name" name="name" required #name="ngModel" />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Email field with validation -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="Email" name="email" required #email="ngModel" />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+        Email is required.
+      </div>
+    </div>
+
+    <!-- Mobile field with validation -->
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <input type="text" id="mobile" [(ngModel)]="MobileNumber" name="mobile" required #mobile="ngModel" />
+      <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="error-message">
+        Mobile number is required.
+      </div>
+    </div>
+
+    <!-- Password field with validation -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="Password" name="password" required #password="ngModel" />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+        Password is required.
+      </div>
+    </div>
+
+    <!-- Photo field with validation -->
+    <div class="form-group">
+      <label for="photo">Photo</label>
+      <input type="file" id="photo" [(ngModel)]="Photo" (change)="onFileChange($event)" name="photo" required #photo="ngModel" />
+      <div *ngIf="photo.invalid && (photo.dirty || photo.touched)" class="error-message">
+        Photo is required.
+      </div>
+    </div>
+
+    <!-- Submit button (disabled if form is invalid) -->
+    <button type="submit" class="btn-submit" [disabled]="!addUserForm.valid">Add</button>
+  </form>
+</div>
+</div>
