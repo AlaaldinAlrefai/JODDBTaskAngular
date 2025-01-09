@@ -20,21 +20,21 @@ html, body {
 }
 
 .user-list-container {
-  padding: 20px;          /* هوامش داخلية */
-  width: 100%;  /* تأكد أن الجدول يأخذ كامل عرض الحاوية */
+  padding: 20px;       
+  width: 100%; 
 
-  background-color: #fff; /* خلفية بيضاء */
-  margin: 0;              /* تأكد من عدم وجود هوامش */
-  border: 2px solid rgba(183, 193, 183, 0.866); /* إضافة حد لقائمة المستخدمين */
+  background-color: #fff;
+  margin: 0;            
+  border: 2px solid rgba(183, 193, 183, 0.866); 
 }
 
 .table-container {
-  overflow-x: auto; /* تمكين التمرير الأفقي إذا لزم الأمر */
+  overflow-x: auto; 
 }
 
 .table {
-  width: 100%;  /* تأكد أن الجدول يأخذ كامل عرض الحاوية */
-  border-collapse: collapse; /* لدمج الحدود داخل الجدول */
+  width: 100%;  
+  border-collapse: collapse; 
 }
 .table th,
 .table td {
@@ -69,59 +69,59 @@ html, body {
 }
 
 .btn-delete {
-  background: #e74c3c; /* Initial background color */
-  color: white; /* Text color for better contrast */
-  border: none; /* Remove default border */
-  padding: 8px 15px; /* Add padding for better button size */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 14px; /* Increase font size for better readability */
-  font-weight: bold; /* Make the text bolder */
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition effects */
-  cursor: pointer; /* Change cursor to pointer for interactivity */
+  background: #e74c3c; 
+  color: white; 
+  border: none; 
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold; 
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
+  cursor: pointer; 
   margin-right: 4px;
 }
 
 .btn-delete:hover {
-  background: #c0392b; /* Darker red shade on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow on hover for depth */
+  background: #c0392b; 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .btn-delete:active {
-  background: #9b2c2c; /* Even darker red shade when clicked */
-  transform: translateY(0); /* Return to original position */
+  background: #9b2c2c; 
+  transform: translateY(0);
 }
 
 .btn-delete:focus {
-  outline: none; /* Remove the default focus outline */
-  box-shadow: 0 0 5px rgba(231, 76, 60, 0.8); /* Custom focus style with more visible color */
+  outline: none; 
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.8);
 }
 
 .btn-update {
   background: #007bff;
-  color: white; /* Text color for better contrast */
-  border: none; /* Remove default border */
-  padding: 8px 15px; /* Add padding for better button size */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 14px; /* Increase font size for better readability */
-  font-weight: bold; /* Make the text bolder */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
-  cursor: pointer; /* Change cursor to pointer for interactivity */
+  color: white; 
+  border: none; 
+  padding: 8px 15px;
+  border-radius: 5px; 
+  font-size: 14px; 
+  font-weight: bold; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer; 
 }
 
 .btn-update:hover {
-  background: #0056b3; /* Darker shade on hover for better feedback */
-  transform: translateY(-2px); /* Slight lift effect */
+  background: #0056b3; 
+  transform: translateY(-2px); 
 }
 
 .btn-update:active {
-  background: #004085; /* Even darker shade when clicked */
-  transform: translateY(0); /* Return to original position */
+  background: #004085; 
+  transform: translateY(0); 
 }
 
 .btn-update:focus {
-  outline: none; /* Remove the default focus outline */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Custom focus style */
+  outline: none; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
 
 .file-upload-container {
@@ -130,7 +130,7 @@ html, body {
 }
 
 .file-input {
-  margin-right: 10px;  /* مسافة بين الـ input و الـ spinner */
+  margin-right: 10px;  
 }
 
 .spinner {
@@ -148,19 +148,17 @@ html, body {
 }
 
 .user-photo {
-  width: 100px;      /* تحديد عرض الصورة */
-  height: 100px;     /* تحديد ارتفاع الصورة */
-  object-fit: cover; /* لضبط الصورة داخل العنصر بشكل جيد */
-  border-radius: 50%; /* لجعل الصورة دائرية */
+  width: 100px;      
+  height: 100px;   
+  object-fit: cover; 
+  border-radius: 50%;
 }
-/* العنوان */
 .section-title {
   font-size: 1.8rem;
   color: #333;
   margin-bottom: 20px;
 }
 
-/* استيراد Excel */
 .import-excel-container {
   align-items: center;
   gap: 10px;
@@ -183,18 +181,18 @@ html, body {
   border-radius: 4px;
 }
 app-sidebar {
-  width: 16.67%; /* يأخذ 2 من 12 من العرض (col-md-2) */
-  flex-shrink: 0; /* منع انكماش الشريط الجانبي */
-  background-color: #333; /* لون الشريط الجانبي */
-  color: #fff; /* لون النص */
-  height: 100%; /* يمتد لارتفاع الصفحة بالكامل */
+  width: 16.67%; 
+  flex-shrink: 0;
+  background-color: #333; 
+  color: #fff; 
+  height: 100%;
 }
 
 
 
 .pagination-container {
   display: flex;
-  justify-content: flex-end; /* محاذاة الـ pagination إلى الجهة اليمنى */
+  justify-content: flex-end; 
   padding: 20px 0;
 }
 

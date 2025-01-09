@@ -29,22 +29,14 @@ export class UserListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 5;
 
-/**
- *
- */
-constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
-  
-  
-}
+
+  constructor(private userService: UserService, private cdRef: ChangeDetectorRef) {
+
+
+  }
   ngOnInit(): void {
-    // this.userService.getAllUsers().subscribe(
-    //   result => 
-    //     {this.userList=result;
-    //       console.log("User List:", this.userList);
-    //       console.log("userList.photo: "+this.userList.photo);
-    //     }
-    // )
-  
+
+
     this.loadUsers();
 
 
@@ -53,8 +45,8 @@ constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
 
   loadUsers(): void {
     this.userService.getUsers(this.currentPage, this.pageSize).subscribe(response => {
-      this.userList = response.items;  // assuming 'items' contains the users
-      this.totalPages = response.totalPages;  // assuming 'totalPages' contains the total pages count
+      this.userList = response.items;
+      this.totalPages = response.totalPages;
     });
   }
 
@@ -77,7 +69,6 @@ constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
       if (result.isConfirmed) {
         this.userService.deleteUser(userId).subscribe(
           response => {
-            // إظهار رسالة نجاح
             Swal.fire({
               icon: 'success',
               title: 'Deleted!',
@@ -87,14 +78,12 @@ constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
               showConfirmButton: false,
               timer: 3000,
             });
-  
-            // تحديث قائمة المستخدمين
+
             this.refreshUserList();
           },
           error => {
             console.error('Error deleting user', error);
-  
-            // إظهار رسالة خطأ
+
             Swal.fire({
               icon: 'error',
               title: 'Error!',
@@ -109,30 +98,30 @@ constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
       }
     });
   }
-  
+
   onUserUpdated() {
-    this.refreshUserList(); // إعادة تحميل القائمة بعد التحديث
+    this.refreshUserList();
   }
-  
-  
+
+
   refreshUserList(): void {
-    this.isLoading = true; // عرض حالة التحميل أثناء التحديث
+    this.isLoading = true;
     this.userService.getAllUsers().subscribe(
       result => {
         this.userList = result;
-        this.isLoading = false; // إخفاء حالة التحميل بعد التحديث
+        this.isLoading = false;
       },
       error => {
         console.error('Error refreshing user list:', error);
-        this.isLoading = false; // إخفاء حالة التحميل إذا حدث خطأ
+        this.isLoading = false;
       }
     );
   }
-  
-  
-  
 
-  isPopupOpen = false; // لتحديد إذا كانت النافذة المنبثقة مفتوحة
+
+
+
+  isPopupOpen = false;
   selectedUser: IUpdateUser | null = null;
 
   openUpdatePopup(userId: number) {
@@ -140,22 +129,21 @@ constructor(private userService:UserService, private cdRef: ChangeDetectorRef) {
     this.userService.getUserById(userId).subscribe(
       (user) => {
         console.log('User fetched:', user);
-        
 
 
-        // تحقق من أن جميع الحقول المطلوبة موجودة وصحيحة
+
         if (user && user.id && user.name && user.email && user.mobileNumber) {
           this.selectedUser = user;
-          this.isPopupOpen = true;  // فتح النافذة بعد التأكد من أن selectedUser يحتوي على بيانات صحيحة
+          this.isPopupOpen = true;
           console.log('Selected User to pass to popup:', this.selectedUser);
           console.log('Checking user fields:');
-console.log('ID:', user.id);
-console.log('Name:', user.name);
-console.log('Email:', user.email);
-console.log('Mobile:', user.mobileNumber);
-if (!user.id || !user.name || !user.email || !user.mobileNumber) {
-  console.error('Invalid field found');
-}
+          console.log('ID:', user.id);
+          console.log('Name:', user.name);
+          console.log('Email:', user.email);
+          console.log('Mobile:', user.mobileNumber);
+          if (!user.id || !user.name || !user.email || !user.mobileNumber) {
+            console.error('Invalid field found');
+          }
 
         } else {
           console.error('User data is invalid', user);
@@ -166,64 +154,62 @@ if (!user.id || !user.name || !user.email || !user.mobileNumber) {
       }
     );
   }
-  
-  
-  
-  
-  
+
+
+
+
+
 
   closePopup() {
     this.isPopupOpen = false;
-    // this.selectedUser = null;  // أو أي إجراء آخر لإعادة تعيين selectedUser بعد الإغلاق
 
   }
-  
+
 
 
   importExcel(event: Event): void {
     const input = event.target as HTMLInputElement;
     const file: File | null = input.files ? input.files[0] : null;
-  
+
     if (file) {
-      this.isLoading = true;  // تعيين حالة التحميل إلى true قبل البدء في الرفع
-
+      this.isLoading = true;
       this.userService.
-      importExcel(file).subscribe({
-        next: (response) => {
-          console.log('File uploaded successfully:', response);  // تأكد من استخدام `response.body` هنا
-          this.isLoading = false;  // تعيين حالة التحميل إلى false بعد انتهاء الرفع
-          Swal.fire({
-            icon: 'success',
-            title: 'Upload Successful!',
-            text: 'Your file has been uploaded successfully.',
-            toast: true,           // جعل التنبيه يشبه الـ toaster
-            position: 'top-end',   // تحديد مكان التنبيه
-            showConfirmButton: false,  // إخفاء زر التأكيد
-            timer: 3000,           // مدة عرض التنبيه (بالميلي ثانية)
-          });
+        importExcel(file).subscribe({
+          next: (response) => {
+            console.log('File uploaded successfully:', response);
+            this.isLoading = false;
+            Swal.fire({
+              icon: 'success',
+              title: 'Upload Successful!',
+              text: 'Your file has been uploaded successfully.',
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+            });
 
-        },
-        error: (error) => {
-          console.error('Upload failed:', error);
-          this.isLoading = false;  // تعيين حالة التحميل إلى false في حال حدوث خطأ
-          Swal.fire({
-            icon: 'error',
-            title: 'Upload Failed!',
-            text: 'There was an error uploading the file. Please try again.',
-            toast: true,           // جعل التنبيه يشبه الـ toaster
-            position: 'top-end',   // تحديد مكان التنبيه
-            showConfirmButton: false,  // إخفاء زر التأكيد
-            timer: 3000,           // مدة عرض التنبيه (بالميلي ثانية)
-          });
-  
-        }
-      });
+          },
+          error: (error) => {
+            console.error('Upload failed:', error);
+            this.isLoading = false;
+            Swal.fire({
+              icon: 'error',
+              title: 'Upload Failed!',
+              text: 'There was an error uploading the file. Please try again.',
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+            });
+
+          }
+        });
     } else {
       console.log('No file selected');
-       
+
     }
   }
-  
-  
+
+
 
 }

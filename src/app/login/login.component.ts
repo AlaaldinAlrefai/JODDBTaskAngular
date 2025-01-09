@@ -15,22 +15,18 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  /**
-   *
-   */
-  constructor(private userService:UserService,private router:Router) {
-    
+
+  constructor(private userService: UserService, private router: Router) {
+
   }
   onSubmit() {
     console.log(`Username: ${this.email}, Password: ${this.password}`);
     this.userService.login(this.email, this.password).subscribe(
       (response) => {
-        // استلام الـ token من الـ API واستدعاء دالة setLoginState
         const userToken = response.token;
         this.userService.setLoginState(userToken);
         console.log('Login successful!');
         this.router.navigate(['/UserList']);
-        // توجيه المستخدم إلى الصفحة الرئيسية أو أي صفحة أخرى بعد تسجيل الدخول
       },
       (error) => {
         this.errorMessage = 'Invalid credentials, please try again.';

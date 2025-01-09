@@ -5,7 +5,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { routes } from './app.routes';
-import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from "./sidebar/sidebar.component";
 
 @Component({
@@ -16,7 +15,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     LoginComponent,
     UserListComponent,
     AddUserComponent,
-    HeaderComponent,
+
     SidebarComponent,
     
 ],

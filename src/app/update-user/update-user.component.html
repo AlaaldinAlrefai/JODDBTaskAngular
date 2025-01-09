@@ -1,38 +1,38 @@
 <div class="popup">
-    <div class="popup-content">
-      <h2>Update User</h2>
-      <form (ngSubmit)="onSubmit()" #updateUserForm="ngForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" [(ngModel)]="selectedUser.name" name="name" required #name="ngModel"/>
-          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
-            Name is required.
-          </div>
+  <div class="popup-content">
+    <h2>Update User</h2>
+    <form (ngSubmit)="onSubmit()" #updateUserForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="selectedUser.name" name="name" required #name="ngModel" />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+          Name is required.
         </div>
-  
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" [(ngModel)]="selectedUser.email" name="email" required #email="ngModel"/>
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-            Email is required.
-          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="selectedUser.email" name="email" required #email="ngModel" />
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+          Email is required.
         </div>
-  
-        <div class="form-group">
-          <label for="mobile">Mobile</label>
-          <input type="text" id="mobile" [(ngModel)]="selectedUser.mobileNumber" name="mobile" required #mobile="ngModel"/>
-          <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="error-message">
-            Mobile number is required.
-          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="text" id="mobile" [(ngModel)]="selectedUser.mobileNumber" name="mobile" required
+          #mobile="ngModel" />
+        <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="error-message">
+          Mobile number is required.
         </div>
-  
-        <!-- Other fields like password, photo can be added similarly -->
-  
-        <div class="form-actions">
-          <button type="submit" [disabled]="!updateUserForm.valid">Update</button>
-          <button type="button" (click)="closePopup()">Cancel</button>
-        </div>
-      </form>
-    </div>
+      </div>
+
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="!updateUserForm.valid">Update</button>
+        <button type="button" (click)="closePopup()">Cancel</button>
+      </div>
+    </form>
   </div>
-  <pre>{{ selectedUser | json }}</pre>
+</div>
+<pre>{{ selectedUser | json }}</pre>

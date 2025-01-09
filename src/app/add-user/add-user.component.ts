@@ -10,19 +10,19 @@ import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-add-user',
   standalone: true,
-  imports: [FormsModule,SidebarComponent,CommonModule],
+  imports: [FormsModule, SidebarComponent, CommonModule],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
 })
-export class AddUserComponent  {
+export class AddUserComponent {
   Name: string = '';
   Email: string = '';
   MobileNumber: string = '';
   Password: string = '';
-  Photo: File | null = null; // لتخزين صورة المستخدم في حال تم رفعها
-  isAdding: boolean = false; // لتحديد ما إذا كان يتم إضافة المستخدم
+  Photo: File | null = null;
+  isAdding: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   onSubmit() {
     const newUser = {
@@ -30,10 +30,10 @@ export class AddUserComponent  {
       Email: this.Email,
       MobileNumber: this.MobileNumber,
       Password: this.Password,
-      Photo: this.Photo ? this.Photo.name : null // في حال تم رفع صورة
+      Photo: this.Photo ? this.Photo.name : null
     };
-    
-    this.isAdding = true; // تفعيل حالة التحميل لتفعيل تعطيل الزر
+
+    this.isAdding = true;
 
     this.userService.AddUser(newUser).subscribe(
       (response) => {
@@ -51,7 +51,6 @@ export class AddUserComponent  {
 
         this.clearForm();
 
-        // أضف هنا الكود الذي يقوم بتوجيه المستخدم أو إظهار رسالة نجاح
       },
       (error) => {
         this.isAdding = false;
@@ -66,7 +65,6 @@ export class AddUserComponent  {
           showConfirmButton: false,
           timer: 3000,
         });
-        // أضف هنا الكود الذي يعرض رسالة خطأ للمستخدم
       }
     );
   }
@@ -74,7 +72,7 @@ export class AddUserComponent  {
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.Photo = file; // تخزين الصورة في المتغير photo
+      this.Photo = file;
       console.log('File selected:', file.name);
     }
   }
@@ -89,49 +87,5 @@ export class AddUserComponent  {
 
 
 
-
-
-
-
-
-  // onFileChange(event: any): void {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     this.Photo = file; // تخزين الصورة في المتغير Photo
-  //     console.log('File selected:', file.name);
-  
-  //     // حفظ الصورة في مجلد assets
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       // إنشاء رابط للصورة
-  //       const base64String = reader.result as string;
-  //       const blob = this.dataURLtoBlob(base64String);
-  
-  //       // محاكاة حفظ الصورة في assets
-  //       this.saveImageToAssets(blob, file.name);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-  
-  // // تحويل Base64 إلى Blob
-  // dataURLtoBlob(dataURL: string): Blob {
-  //   const byteString = atob(dataURL.split(',')[1]);
-  //   const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
-  //   const ab = new ArrayBuffer(byteString.length);
-  //   const ia = new Uint8Array(ab);
-  //   for (let i = 0; i < byteString.length; i++) {
-  //     ia[i] = byteString.charCodeAt(i);
-  //   }
-  //   return new Blob([ab], { type: mimeString });
-  // }
-  
-  // // حفظ الصورة في مجلد assets
-  // saveImageToAssets(blob: Blob, fileName: string): void {
-  //   const filePath = `assets/${fileName}`;
-  //   FileSaver.saveAs(blob, filePath);
-  //   console.log(`File saved to ${filePath}`);
-  // }
-  
 
 }
