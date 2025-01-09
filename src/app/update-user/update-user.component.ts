@@ -15,10 +15,10 @@ import Swal from 'sweetalert2';
 })
 export class UpdateUserComponent implements OnChanges {
   @Input() selectedUser!: IUpdateUser;
-  @Output() close = new EventEmitter<void>(); // لإغلاق النافذة المنبثقة بعد التحديث
-  @Output() userUpdated = new EventEmitter<void>(); // لإعلام المكون الأب بالتحديث
+  @Output() close = new EventEmitter<void>();
+  @Output() userUpdated = new EventEmitter<void>();
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedUser'] && this.selectedUser) {
@@ -30,12 +30,10 @@ export class UpdateUserComponent implements OnChanges {
     console.log('Selected User on Init:', this.selectedUser);
   }
 
-  // دالة لإغلاق النافذة المنبثقة
   closePopup() {
     this.close.emit();
   }
 
-  // دالة لإرسال بيانات المستخدم لتحديثها
   onSubmit() {
     console.log('Selected User on Submit:', this.selectedUser);
 
@@ -56,9 +54,8 @@ export class UpdateUserComponent implements OnChanges {
               timer: 3000,
             });
 
-            this.userUpdated.emit(); // إعلام المكون الأب بتحديث المستخدم
-
-            this.closePopup(); // إغلاق النافذة المنبثقة بعد التحديث الناجح
+            this.userUpdated.emit();
+            this.closePopup();
           },
           (error) => {
             console.error('Error updating user:', error);

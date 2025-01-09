@@ -1,9 +1,10 @@
 <div class="sidebar">
   <ul>
-    <li><a routerLink="/AddUser" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add User</a></li>
-    <li><a routerLink="/UserList" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">User List</a></li>
+    <li><a routerLink="/AddUser" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Add User</a>
+    </li>
+    <li><a routerLink="/UserList" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">User
+        List</a></li>
     <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login">Login</a></li>
     <li *ngIf="isLoggedIn$ | async"><a (click)="logout()">Logout</a></li>
-    <!-- <li><a routerLink="/ImportExcel">Import Excel</a></li> -->
   </ul>
 </div>
